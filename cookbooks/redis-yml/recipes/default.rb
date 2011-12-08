@@ -5,7 +5,7 @@
 # Setup redis yml files to point to a remote redis db
 
 if ['app_master', 'app', 'util'].include?(node[:instance_role])
-  redis_master = node[:db_host]
+  redis_instance = node[:utility_instances].find { |instance| instance[:name] == 'redis' }
 
   node[:applications].each do |app, data|
     template "/data/#{app}/shared/config/redis.yml" do
@@ -16,7 +16,7 @@ if ['app_master', 'app', 'util'].include?(node[:instance_role])
       backup 0
       variables({
         :environment => node[:environment][:framework_env],
-        :hostname => redis_master
+        :hostname => redis_instance[:hostname]
       })
     end
   end

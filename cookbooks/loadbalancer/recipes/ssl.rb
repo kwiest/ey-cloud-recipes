@@ -1,4 +1,4 @@
-ey_cloud_report "load balancer" do
+ey_cloud_report "load balancer ssl certs" do
   message 'generating ssl certs'
 end
 

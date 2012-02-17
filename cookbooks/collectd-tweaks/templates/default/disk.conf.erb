@@ -1,0 +1,13 @@
+<Threshold>
+  <Plugin "df-<%= @mount %>">
+    <Type "df_complex">
+      Instance "free"
+      Invert true
+      WarningMin    0.00
+      WarningMax    <%= @warning %>
+      FailureMin    0.00
+      FailureMax    <%= @failure %>
+      DataSource "value"
+    </Type>
+  </Plugin>
+</Threshold>

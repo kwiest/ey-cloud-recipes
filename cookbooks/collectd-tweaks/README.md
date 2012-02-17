@@ -13,10 +13,11 @@ repository.
 
 ## Usage
 
+Modiy recipes/default.rb to have your desired limits for the mounted
+volume.
+
     collectd_disk_alert do
       disk :data
       warning '1572864000.0'
       failure '524288000.0'
     end
-
-limits are specified in bytes.

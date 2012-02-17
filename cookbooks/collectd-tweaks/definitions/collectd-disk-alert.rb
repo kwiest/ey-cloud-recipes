@@ -18,8 +18,8 @@ define :collectd_disk_alert do
 
   execute "Include the new config" do
     command 'echo "Include \"'+config_file+'\"" >> /etc/engineyard/collectd.conf'
-    # not_if { "grep '#{mount}.disk.collectd.conf' /etc/engineyard/collectd.conf" }
-    action :run
+    notifies :run, "execute[ensure-collectd-has-fresh-config]"
+    not_if { "grep '#{mount}.disk.collectd.conf' /etc/engineyard/collectd.conf" }
   end
 
   # Kill collectd (violently) to ensure that it has a fresh config
@@ -27,6 +27,5 @@ define :collectd_disk_alert do
     command %Q{
       pkill -9 collectd;true
     }
-    action :run
   end
 end

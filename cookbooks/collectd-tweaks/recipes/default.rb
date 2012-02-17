@@ -1,5 +1,5 @@
 collectd_disk_alert do
   disk 'data'
-  warning '3221225472.0'
-  failure '5368709120.0'
+  warning '1572864000.0' # 1.5GB
+  failure '524288000.0' # 500MB
 end

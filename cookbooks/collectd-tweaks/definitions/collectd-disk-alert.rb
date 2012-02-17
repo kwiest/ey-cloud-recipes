@@ -2,8 +2,9 @@ define :collectd_disk_alert do
   mount = params[:disk]
   warning_size = params[:warning]
   failure_size = params[:failure]
+  config_file = params[:config] || "/etc/engineyard/#{mount}.disk.collectd.conf"
 
-  template "/etc/engineyard/#{mount}.disk.collectd.conf" do
+  template config_file do
     owner 'root'
     group 'root'
     mode 0644
@@ -16,7 +17,7 @@ define :collectd_disk_alert do
   end
 
   execute "Include the new config" do
-    command "echo \"Include /etc/engineyard/#{mount}.disk.collectd.conf\" >> /etc/engineyard/collectd.conf"
+    command 'echo "Include \"'+config_file+'\"" >> /etc/engineyard/collectd.conf'
     # not_if { "grep '#{mount}.disk.collectd.conf' /etc/engineyard/collectd.conf" }
     action :run
   end

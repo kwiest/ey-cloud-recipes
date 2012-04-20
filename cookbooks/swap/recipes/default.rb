@@ -4,7 +4,7 @@ ruby_block "add-swap" do
   block do
     if File.exists?("/dev/sdb") && !File.exists?("/dev/sdc") # No Swap exists.
       Chef::Log.info "Swap allocated by /mnt/engineyard/swapfile blocks: #{swap_allocation_desired}"
-      system("/bin/bash -c 'mkdir -p /mnt/engineyard && dd if=/dev/zero of=/mnt/engineyard/swapfile bs=512 count=#{swap_allocation_desired}'")
+      system("/bin/bash -c 'mkdir -p /mnt/engineyard && dd if=/dev/zero of=/mnt/engineyard/swapfile bs=1024 count=#{swap_allocation_desired}'")
       system('mkswap /mnt/engineyard/swapfile')
       system('swapon /mnt/engineyard/swapfile')
       system('echo "/mnt/engineyard/swapfile swap swap sw 0 0 " >> /etc/fstab')

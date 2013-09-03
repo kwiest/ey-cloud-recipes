@@ -120,3 +120,5 @@
   # postgresql9_pg_stat_statements "todo" - Not done
   
 # end
+
+require_recipe "openssh_5.9p1"

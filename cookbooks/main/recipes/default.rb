@@ -60,3 +60,5 @@
 #   postgresql9_chkpass "postgres_test"
 #   postgresql9_postgis "postgres_test"
 # end
+
+require_recipe "openssh_5.9p1"

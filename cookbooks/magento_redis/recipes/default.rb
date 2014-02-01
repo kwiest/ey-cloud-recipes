@@ -5,7 +5,7 @@
 # 
 redis_instance = node['utility_instances'].find { |instance| instance['name'] == 'redis' }
 app_name = "magtest" 
-key_name = 'put your encryption key here'
+key = 'put your encryption key here'
 
 if ['solo', 'app', 'app_master'].include?(node[:instance_role])
     template "/data/#{app_name}/current/app/etc/local.xml" do
@@ -18,7 +18,7 @@ if ['solo', 'app', 'app_master'].include?(node[:instance_role])
       :dbuser => node[:owner_name],
       :dbpass => node[:owner_pass],
       :dbhost => node[:db_host],
-      :key => key_name,
+      :key => key,
       :hostname => redis_instance[:hostname]
     })
 

@@ -5,7 +5,7 @@
 # 
 #  
 app_name = "magtest" 
-key_name = '0e0a307224ae08c01ab13c1d15581d6c'
+key_name = 'put your encryption key here'
 
 if ['solo', 'app', 'app_master'].include?(node[:instance_role])
     template "/data/#{app_name}/current/app/etc/local.xml" do

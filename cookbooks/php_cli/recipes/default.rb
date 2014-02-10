@@ -1,4 +1,4 @@
-template "/home/deploy/.bashrc" do
+template "/home/#{node[:owner_name]}/.bashrc" do
     owner node[:owner_name]
     group node[:owner_name]
     mode 0644

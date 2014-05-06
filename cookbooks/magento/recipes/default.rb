@@ -8,7 +8,7 @@ app_name = "magtest"
 key = "put your encryption key here"
 
 if ['solo', 'app', 'app_master'].include?(node[:instance_role])
-    template "/data/#{app_name}/current/app/etc/local.xml" do
+    template "/data/#{app_name}/shared/config/local.xml" do
     owner node[:owner_name]
     group node[:owner_name]
     mode 0644

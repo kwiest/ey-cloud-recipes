@@ -27,5 +27,6 @@ ssh_desiredversion = "openssh-5.9p1"
     
   execute "install ssh " do
     command "cd /data/#{ssh_dir} && ./configure --prefix=/usr && make && make install"
+    not_if { FileTest.directory?("/data/#{ssh_dir}") }
   end
   

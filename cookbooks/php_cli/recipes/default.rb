@@ -4,7 +4,6 @@ template "/home/#{node[:owner_name]}/.bashrc" do
     mode 0644
     source ".bashrc.erb"
     variables({
-      :app_name => app_name,
       :php_env => node[:environment][:framework_env],
       :user => node[:owner_name],
       :dbuser => node[:owner_name],
